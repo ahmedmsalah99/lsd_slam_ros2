@@ -35,7 +35,7 @@ namespace lsd_slam
 {
 
 
-DebugOutput3DWrapper::DebugOutput3DWrapper(int width, int height)
+DebugOutput3DWrapper::DebugOutput3DWrapper(int width, int height):Output3DWrapper()
 {
 	cvNamedWindow("Tracking_output", 1); //Create window
 	this->width = width;

@@ -27,6 +27,7 @@
 #include "io_wrapper/timestamp.h"
 #include "io_wrapper/notify_buffer.h"
 #include "io_wrapper/timestamped_object.h"
+#include "io_wrapper/output_3d_wrapper.h"
 #include "util/sophus_util.h"
 
 namespace cv {
@@ -41,7 +42,7 @@ namespace lsd_slam
 class SlamSystem;
 class LiveSLAMWrapperROS;
 class InputImageStream;
-class Output3DWrapper;
+// class Output3DWrapper;
 
 
 struct LiveSLAMWrapper : public Notifiable

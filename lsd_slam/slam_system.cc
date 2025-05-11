@@ -923,6 +923,7 @@ void SlamSystem::randomInit(uchar* image, double timeStamp, int id)
                                            currentKeyFrame));
         keyFrameGraph->idToKeyFrameMutex.unlock();
     }
+    std::cout << "publishing the key frame\n";
     if(continuousPCOutput
             && outputWrapper != 0) outputWrapper->publishKeyframe(currentKeyFrame.get());
 

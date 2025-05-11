@@ -22,6 +22,13 @@
 #include <string>
 #include <vector>
 #include "util/sophus_util.h"
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include "lsd_slam/model/frame.h"
+#include <unistd.h>
+#include <cstring>
+#include <opencv2/core/core.hpp>
+
 
 namespace cv {
 class Mat;
@@ -30,25 +37,47 @@ class Mat;
 namespace lsd_slam
 {
 
-class Frame;
+// class Frame;
 
 class KeyFrameGraph;
-class Frame;
+// class Frame;
+#define MAX_CLOUD_POINTS 300000
+struct CloudPoint3D{
+    float x;
+    float y;
+    float z;
+};
 
-
+struct CloudPoints3D
+{
+    uint32_t id;
+    uint32_t cloud_points_num;
+    float time;
+    bool isKeyframe;
+    CloudPoint3D cloud_points[MAX_CLOUD_POINTS];
+    float scale;
+    float camToWorld[7];
+};
 
 /**
  * Virtual 3D display object.
  */
 class Output3DWrapper
 {
-public:
-    virtual ~Output3DWrapper() {};
 
+public:
+    Output3DWrapper(){};
+    virtual ~Output3DWrapper();
+    void setSocket(int output_client_fd);
+    void sendBufferData(std::vector<uchar> buffer);
     virtual void publishKeyframeGraph(KeyFrameGraph* graph) {};
 
     // publishes a keyframe. if that frame already existis, it is overwritten, otherwise it is added.
-    virtual void publishKeyframe(Frame* kf) {};
+    virtual void publishKeyframe(Frame* f);
+        
+     
+ 
+             
 
     // published a tracked frame that did not become a keyframe (yet; i.e. has no depth data)
     virtual void publishTrackedFrame(Frame* kf) {};
@@ -60,6 +89,9 @@ public:
                                             std::string identifier) {};
 
     virtual void publishDebugInfo(const Eigen::Matrix<float, 20, 1>& data) {};
-
+    int initSocket();
+private:
+    // struct sockaddr_in server_addr_;
+    int sock_fd_ = -1;
 };
 }
