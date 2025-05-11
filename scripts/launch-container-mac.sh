@@ -18,6 +18,6 @@ docker run -it \
     -e DISPLAY=$ip$display_number \
     -e QT_X11_NO_MITSHM=1 \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-    --name lsdslam_noros \
+    --name lsdslam_ros2 \
     --privileged \
     lsdslam_noros
