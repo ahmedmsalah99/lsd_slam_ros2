@@ -14,7 +14,7 @@ We highly recommend to use docker to build the source, because it is very diffic
 
 ```
 $git clone https://github.com/IshitaTakeshi/lsd_slam_noros.git
-$cd lsd_slam_noros
+$cd lsd_slam_ros2
 ```
 
 ### Building a docker image
@@ -22,7 +22,7 @@ $cd lsd_slam_noros
 Run the following command in a directory where `Dockerfile` is placed.
 
 ```
-$docker build -t lsdslam_noros:latest .
+$docker build -t lsdslam_ros2:latest .
 ```
 
 ### Launch a container
@@ -43,7 +43,7 @@ $./scripts/download_tum_mono.sh
 
 ### Run LSD-SLAM
 
-The debug window should appear by executing `$./bin/main_on_images data/sequence_$SEQUENCE`.
+The debug window should appear by executing `$./bin/main_on_images_sock data/sequence_$SEQUENCE`.
 
 If segmentation fault or Gtk-WARNING happens, executing the command above multiple times may solve it.
 
