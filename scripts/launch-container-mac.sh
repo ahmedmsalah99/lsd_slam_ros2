@@ -20,4 +20,6 @@ docker run -it \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
     --name lsdslam_ros2 \
     --privileged \
+    -p 9000:9000 \
+    -p 9002:9002 \
     lsdslam_ros2

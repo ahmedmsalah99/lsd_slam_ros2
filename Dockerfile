@@ -78,4 +78,4 @@ RUN git clone https://github.com/ahmedmsalah99/lsd_slam_ros2.git \
     && cmake .. \
     && make
 
-WORKDIR $WORKSPACE/lsd_slam_noros
+WORKDIR $WORKSPACE/lsd_slam_ros2
