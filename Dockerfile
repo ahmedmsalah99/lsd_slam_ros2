@@ -72,7 +72,7 @@ RUN apt-get -y install libboost-all-dev freeglut3-dev libglew-dev libcanberra-gt
 
 # build in a single process since it seems parallel build doesn't contribute to the speed
 RUN git clone https://github.com/ahmedmsalah99/lsd_slam_ros2.git \
-    && cd lsd_slam_noros/ \
+    && cd lsd_slam_ros2/ \
     && mkdir build \
     && cd build/ \
     && cmake .. \
